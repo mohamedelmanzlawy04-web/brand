@@ -1,0 +1,1 @@
+{"version":3,"file":"getWishlistParams.d.ts","sourceRoot":"","sources":["../../../src/generated/types/getWishlistParams.ts"],"names":[],"mappings":"AAAA;;;;;;GAMG;AAEH,MAAM,MAAM,iBAAiB,GAAG;IAChC,SAAS,EAAE,MAAM,CAAC;CACjB,CAAC"}
