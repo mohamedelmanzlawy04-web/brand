@@ -1,0 +1,316 @@
+You are a senior full-stack developer and UI/UX designer.
+
+Build a modern, premium, responsive e-commerce website for a clothing brand that sells beach and summer t-shirts.
+
+## Tech Stack
+
+* Next.js 15 (App Router)
+* TypeScript
+* Tailwind CSS
+* Framer Motion
+* React
+* Local JSON or SQLite database (easy to edit)
+* Clean folder structure
+* Production-ready code
+
+## Overall Design
+
+I want the website to feel like a luxury beach lifestyle brand.
+
+The style should be inspired by:
+
+* Minimal
+* Apple-level clean UI
+* Zara
+* Represent
+* High-end fashion brands
+
+Color palette:
+
+* White
+* Sand
+* Beige
+* Ocean Blue
+* Light Gray
+* Black text
+
+Rounded corners.
+Soft shadows.
+Smooth animations.
+Excellent spacing.
+
+Everything must be fully responsive.
+
+---
+
+# Landing Page
+
+The hero section should fill the entire screen.
+
+The background should be a looping beach video or a high-quality animated GIF showing:
+
+* Ocean waves
+* Beach
+* Palm trees
+* Summer atmosphere
+
+Add a dark overlay so the text is readable.
+
+Center the following:
+
+Large Heading:
+SUMMER STARTS HERE
+
+Subtitle:
+Premium beach t-shirts made for your next adventure.
+
+Buttons:
+
+* Shop Now
+* Explore Collection
+
+Use smooth fade and slide animations.
+
+After the hero:
+
+* Featured Collection
+* Best Sellers
+* Why Choose Us
+* Customer Reviews
+* Instagram Style Gallery
+* Newsletter
+* Footer
+
+Add beautiful section transitions.
+
+---
+
+# Products Page
+
+Beautiful product grid.
+
+Each product should contain:
+
+* Image
+* Name
+* Price
+* Available Sizes
+* Color
+* Short description
+* Add to Cart button
+* Wishlist button
+
+Hover animations.
+
+Quick View modal.
+
+Filters:
+
+* Size
+* Price
+* Color
+
+Search bar.
+
+Pagination.
+
+---
+
+# Product Details
+
+Large product gallery.
+
+Zoom on hover.
+
+Image carousel.
+
+Size selector.
+
+Quantity selector.
+
+Description.
+
+Shipping info.
+
+Related products.
+
+Sticky Add To Cart button.
+
+---
+
+# Shopping Cart
+
+Modern cart drawer.
+
+Editable quantity.
+
+Remove product.
+
+Subtotal.
+
+Shipping.
+
+Total.
+
+Checkout button.
+
+---
+
+# Checkout
+
+Simple checkout page.
+
+Collect:
+
+* Name
+* Email
+* Phone
+* Address
+* City
+
+Payment methods:
+
+* Cash on Delivery
+* Credit Card (placeholder)
+
+Order summary.
+
+---
+
+# Admin Dashboard
+
+Create:
+
+/admin
+
+Password:
+
+12345
+
+No username required.
+
+After login, create a beautiful admin dashboard.
+
+The dashboard should allow me to:
+
+Products:
+
+* Add product
+* Delete product
+* Edit product
+* Change price
+* Change title
+* Change description
+* Change category
+* Change stock
+* Change sizes
+* Change colors
+* Upload multiple images
+* Delete images
+* Reorder images
+* Mark as Featured
+* Mark as Best Seller
+
+Homepage:
+
+Allow editing:
+
+* Hero title
+* Hero subtitle
+* Hero background video/GIF
+* Hero buttons
+* Newsletter text
+* Footer
+* Customer reviews
+
+Everything should update immediately.
+
+No coding required after deployment.
+
+---
+
+# Performance
+
+Optimize everything.
+
+Lazy loading.
+
+Image optimization.
+
+SEO ready.
+
+Fast loading.
+
+Responsive on:
+
+Desktop
+
+Tablet
+
+Mobile
+
+---
+
+# Animations
+
+Use Framer Motion.
+
+Smooth page transitions.
+
+Hover effects.
+
+Fade in sections.
+
+Floating buttons.
+
+Micro interactions.
+
+---
+
+# Extra Features
+
+Wishlist.
+
+Search.
+
+Dark mode toggle.
+
+Loading animations.
+
+Toast notifications.
+
+Beautiful empty states.
+
+404 page.
+
+Scroll to top button.
+
+---
+
+# Assets
+
+Use placeholder products for now.
+
+For the hero background, use one of these free resources:
+
+Pexels:
+https://www.pexels.com/videos/search/beach/
+
+Pixabay:
+https://pixabay.com/videos/search/beach/
+
+Mixkit:
+https://mixkit.co/free-stock-video/beach/
+
+Coverr:
+https://coverr.co/
+
+The hero should automatically play the background video, be muted, loop forever, and work on desktop and mobile.
+
+---
+
+# Deployment
+
+Prepare the project so it can be deployed easily on Vercel.
+
+The code must be clean, modular, maintainable, and professionally organized.
