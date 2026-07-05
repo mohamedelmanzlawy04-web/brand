@@ -1,4 +1,4 @@
-# Gemini Integration — OpenAPI Endpoints
+# OpenRouter Integration — OpenAPI Endpoints
 
 Add these entries to `lib/api-spec/openapi.yaml`. All paths below are relative to the base server URL (`/api`).
 
@@ -13,8 +13,8 @@ pnpm --filter @workspace/api-spec run codegen
 Add under `tags`:
 
 ```yaml
-  - name: gemini
-    description: Gemini AI chat and image operations
+  - name: openrouter
+    description: OpenRouter AI chat operations
 ```
 
 ## Paths
@@ -22,10 +22,10 @@ Add under `tags`:
 Add under `paths`:
 
 ```yaml
-  /gemini/conversations:
+  /openrouter/conversations:
     get:
-      operationId: listGeminiConversations
-      tags: [gemini]
+      operationId: listOpenrouterConversations
+      tags: [openrouter]
       summary: List all conversations
       responses:
         "200":
@@ -35,28 +35,28 @@ Add under `paths`:
               schema:
                 type: array
                 items:
-                  $ref: "#/components/schemas/GeminiConversation"
+                  $ref: "#/components/schemas/OpenrouterConversation"
     post:
-      operationId: createGeminiConversation
-      tags: [gemini]
+      operationId: createOpenrouterConversation
+      tags: [openrouter]
       summary: Create a new conversation
       requestBody:
         required: true
         content:
           application/json:
             schema:
-              $ref: "#/components/schemas/GeminiConversationInput"
+              $ref: "#/components/schemas/OpenrouterConversationInput"
       responses:
         "201":
           description: Created conversation
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/GeminiConversation"
-  /gemini/conversations/{id}:
+                $ref: "#/components/schemas/OpenrouterConversation"
+  /openrouter/conversations/{id}:
     get:
-      operationId: getGeminiConversation
-      tags: [gemini]
+      operationId: getOpenrouterConversation
+      tags: [openrouter]
       summary: Get conversation with messages
       parameters:
         - name: id
@@ -70,16 +70,16 @@ Add under `paths`:
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/GeminiConversationWithMessages"
+                $ref: "#/components/schemas/OpenrouterConversationWithMessages"
         "404":
           description: Not found
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/GeminiError"
+                $ref: "#/components/schemas/OpenrouterError"
     delete:
-      operationId: deleteGeminiConversation
-      tags: [gemini]
+      operationId: deleteOpenrouterConversation
+      tags: [openrouter]
       summary: Delete a conversation
       parameters:
         - name: id
@@ -95,11 +95,11 @@ Add under `paths`:
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/GeminiError"
-  /gemini/conversations/{id}/messages:
+                $ref: "#/components/schemas/OpenrouterError"
+  /openrouter/conversations/{id}/messages:
     get:
-      operationId: listGeminiMessages
-      tags: [gemini]
+      operationId: listOpenrouterMessages
+      tags: [openrouter]
       summary: List messages in a conversation
       parameters:
         - name: id
@@ -115,10 +115,10 @@ Add under `paths`:
               schema:
                 type: array
                 items:
-                  $ref: "#/components/schemas/GeminiMessage"
+                  $ref: "#/components/schemas/OpenrouterMessage"
     post:
-      operationId: sendGeminiMessage
-      tags: [gemini]
+      operationId: sendOpenrouterMessage
+      tags: [openrouter]
       summary: Send a message and receive an AI response (SSE stream)
       parameters:
         - name: id
@@ -131,30 +131,12 @@ Add under `paths`:
         content:
           application/json:
             schema:
-              $ref: "#/components/schemas/GeminiMessageInput"
+              $ref: "#/components/schemas/OpenrouterMessageInput"
       responses:
         "200":
           description: SSE stream of assistant response chunks
           content:
             text/event-stream: {}
-  /gemini/generate-image:
-    post:
-      operationId: generateGeminiImage
-      tags: [gemini]
-      summary: Generate an image from a text prompt
-      requestBody:
-        required: true
-        content:
-          application/json:
-            schema:
-              $ref: "#/components/schemas/GeminiImageInput"
-      responses:
-        "200":
-          description: Generated image data
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/GeminiImageOutput"
 ```
 
 ## Schemas
@@ -162,7 +144,7 @@ Add under `paths`:
 Add under `components.schemas`:
 
 ```yaml
-    GeminiConversation:
+    OpenrouterConversation:
       type: object
       properties:
         id:
@@ -176,7 +158,7 @@ Add under `components.schemas`:
         - id
         - title
         - createdAt
-    GeminiMessage:
+    OpenrouterMessage:
       type: object
       properties:
         id:
@@ -196,21 +178,21 @@ Add under `components.schemas`:
         - role
         - content
         - createdAt
-    GeminiConversationInput:
+    OpenrouterConversationInput:
       type: object
       properties:
         title:
           type: string
       required:
         - title
-    GeminiMessageInput:
+    OpenrouterMessageInput:
       type: object
       properties:
         content:
           type: string
       required:
         - content
-    GeminiConversationWithMessages:
+    OpenrouterConversationWithMessages:
       type: object
       properties:
         id:
@@ -223,30 +205,13 @@ Add under `components.schemas`:
         messages:
           type: array
           items:
-            $ref: "#/components/schemas/GeminiMessage"
+            $ref: "#/components/schemas/OpenrouterMessage"
       required:
         - id
         - title
         - createdAt
         - messages
-    GeminiImageInput:
-      type: object
-      properties:
-        prompt:
-          type: string
-      required:
-        - prompt
-    GeminiImageOutput:
-      type: object
-      properties:
-        b64_json:
-          type: string
-        mimeType:
-          type: string
-      required:
-        - b64_json
-        - mimeType
-    GeminiError:
+    OpenrouterError:
       type: object
       properties:
         error:
@@ -257,6 +222,5 @@ Add under `components.schemas`:
 
 ## Notes
 
-- The `sendGeminiMessage` endpoint returns an SSE stream (`text/event-stream`). Orval cannot generate a typed hook for SSE. Consume it manually with `fetch` + `ReadableStream` on the client (`EventSource` only supports GET and cannot send a request body).
+- The `sendOpenrouterMessage` endpoint returns an SSE stream (`text/event-stream`). Orval cannot generate a typed hook for SSE. Consume it manually with `fetch` + `ReadableStream` on the client (`EventSource` only supports GET and cannot send a request body).
 - The SSE stream sends `data: {"content": "..."}` chunks followed by a final `data: {"done": true}`.
-- The `generateGeminiImage` endpoint returns base64 image data. Use the `generateImage` helper from `@workspace/integrations-gemini-ai/image` in the route handler.
